@@ -1,10 +1,13 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router'
+import { useState } from 'react'
 
 export const Navbar = () => {
 
   const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+  const [token, setToken] = useState(true);
 
   return (
     <div className='min-w-auto max-w-80% h-16 rounded-2xl shadow-xl my-4 flex flex-row justify-between '>
@@ -26,7 +29,21 @@ export const Navbar = () => {
             <NavLink to={''}> <span className='border-gray-500 border-1 shadow-none mx-2 rounded-2xl transition delay-75 hover:bg-gray-100 cursor-pointer px-2 py-1 text-sm font-light no-underline lg:block hidden'>Admin login</span> </NavLink>
         </div>
 
-        <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm w-[10rem] h-10 rounded-full my-auto text-white mr-6 lg:block hidden' id='create ac button' onClick={() => navigate('/signup')}>Create Account</button>
+        {
+          token 
+          ? <div className='flex items-center gap-2 cursor-pointer group relative mr-4'>
+            <img src={assets.profile_pic} alt="" className='w-8 rounded-full'/>
+            <img src={assets.dropdown_icon} alt="" className='w-2.5'/>
+            <div className='absolute top-10 right-0 pt-4 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
+              <div className='min-w-48 bg-stone-100 rounded flex flex-col shadow-lg gap-4 p-4'>
+                <p onClick={() => navigate('my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
+                <p onClick={() => navigate('my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
+                <p onClick={() => setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
+              </div>
+            </div>
+          </div> :
+          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm w-[10rem] h-10 rounded-full my-auto text-white mr-6 lg:block hidden' id='create ac button' onClick={() => navigate('/signup')}>Create Account</button>
+        }
     </div>
   )
 }
