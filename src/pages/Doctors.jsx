@@ -37,9 +37,9 @@ export const Doctors = () => {
             className='flex flex-col mx-1.5 hover:translate-y-[-10px] transition-all duration-500 rounded-xl border-1 border-indigo-400'
             key={i}
           >
-            <img src={val.image} alt="" className='w-16 sm:w-52 bg-indigo-100 rounded-t-lg' />
+            <img src={val.dpUrl} alt="" className='w-16 sm:w-52 bg-indigo-100 rounded-t-lg' />
             <div className='bg-gray-100 rounded-b-xl pl-4 py-3'>
-              <p className='text-lg font-medium'>{val.name}</p>
+              <p className='text-lg font-medium'>{val.fullName}</p>
               <p className='font-medium'>{val.speciality}</p>
             </div>
           </Link>
