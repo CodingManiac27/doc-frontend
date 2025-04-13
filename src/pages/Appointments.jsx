@@ -3,6 +3,7 @@ import { doctors } from '../assets/assets'
 import { data, useParams } from 'react-router'
 import { useState } from 'react'
 import { assets } from '../assets/assets'
+import axios from 'axios'
 
 export const Appointments = () => {
 
@@ -78,9 +79,9 @@ export const Appointments = () => {
     fetchDocInfo();
   }, [doctors, docId]);
 
-  useEffect(() => {
-    getavailableSlots();
-  }, [docInfo]);
+  // useEffect(() => {
+  //   getavailableSlots();
+  // }, [docInfo]);
 
   return docInfo && (
     <div className='mt-6'>
