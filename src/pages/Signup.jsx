@@ -14,7 +14,9 @@ export const Signup = () => {
         gender: '',
         dob: '',
         speciality: '',
-        DP: null
+        DP: null,
+        about: '',
+        fees: 100,
     });
 
     const specialities = ['Pediatrician', 'Gynaecologist', 'Dermatologist', 'General Physician', 'Neurologist', 'Gastroenterologist'];
@@ -32,6 +34,7 @@ export const Signup = () => {
 
     const submitFn = async (e) => {
         e.preventDefault();
+        
         if (userType == "Doctor") {
             const data = new FormData();
             data.append('fullname', formData.fullname);
@@ -42,6 +45,7 @@ export const Signup = () => {
             data.append('dob', formData.dob);
             data.append('experienceOf', formData.experienceOf || 1);
             data.append('role', userType);
+
             if (formData.DP) {
                 data.append('DP', formData.DP); // Append file
             }
@@ -50,27 +54,28 @@ export const Signup = () => {
                 headers: { "Content-Type": "multipart/form-data" },
                 withCredentials: true,
             })
-                .then(response => {
-                    console.log("✅ Response.data.data: ", response.data.data)
-                    
-                    toast.success("Created account successfully");
-                })
-                .catch(error => {
-                    console.error("❌ Error:", error);
-                    const errMsg = error.response?.data?.errors;
 
-                    if (typeof errMsg === "string") {
-                        if (errMsg.includes("E11000 duplicate key error collection")) {
-                            toast.error("User already exists");
-                        } else {
-                            toast.error(errMsg);
-                        }
-                    } else {
-                        toast.error("Something went wrong.");
-                    }
-                });
+            .then(response => {
+                console.log("✅ Response.data.data: ", response.data.data)
                 
-            }else if(userType == "Patient"){
+                toast.success("Created account successfully");
+            })
+            .catch(error => {
+                console.error("❌ Error:", error);
+                const errMsg = error.response?.data?.errors;
+
+                if (typeof errMsg === "string") {
+                    if (errMsg.includes("E11000 duplicate key error collection")) {
+                        toast.error("User already exists");
+                    } else {
+                        toast.error(errMsg);
+                    }
+                } else {
+                    toast.error("Something went wrong.");
+                }
+            });
+                
+        }else if(userType == "Patient"){
             const data = new FormData();
             data.append('fullname', formData.fullname);
             data.append('email', formData.email);
@@ -86,35 +91,34 @@ export const Signup = () => {
                 headers: { "Content-Type": "multipart/form-data" },
                 withCredentials: true,
             })
-                .then(response => {
-                    console.log("✅ Response:", response)
-                    console.log("✅ Response.data:", response.data.patient)
-                    // console.log("✅ Response.status:", response.data.doctor.dpUrl)
-                    console.log("✅ Response.statusText:", response.statusText)
-                    console.log("✅ Response.headers:", response.headers)
-                    console.log("✅ Response.config:", response.config)
-                    
-                })
-                .catch(error => {
-                    console.error("❌ Error:", error);
-                    if (error.response) {
-                        console.log("📌 Server responded with:", error.response.data);
-                    } else if (error.request) {
-                        console.log("📌 No response received:", error.request);
-                    } else {
-                        console.log("📌 Axios error:", error.message);
-                    }
-                });
+            
+            .then(response => {
+                console.log("✅ Response:", response)
+                console.log("✅ Response.data:", response.data.patient)
+                // console.log("✅ Response.status:", response.data.doctor.dpUrl)
+                console.log("✅ Response.statusText:", response.statusText)
+                console.log("✅ Response.headers:", response.headers)
+                console.log("✅ Response.config:", response.config)
+                
+            })
+            .catch(error => {
+                console.error("❌ Error:", error);
+                if (error.response) {
+                    console.log("📌 Server responded with:", error.response.data);
+                } else if (error.request) {
+                    console.log("📌 No response received:", error.request);
+                } else {
+                    console.log("📌 Axios error:", error.message);
+                }
+            });
 
         }
-
-
 
     }
 
     return (
         <form className="min-h-[80vh] flex items-center" onSubmit={submitFn}>
-            <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-[500px] text-zinc-600 rounded-xl shadow-lg">
+            <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-[550px] text-zinc-600 rounded-xl shadow-lg">
 
                 {/* Tab Switch */}
                 <div className="flex w-full ">
@@ -173,14 +177,14 @@ export const Signup = () => {
                         <label><input type="radio" name="gender" value="Female" onChange={handleChange} /> Female</label>
                     </div>
                 </div>
-                <div className='w-full'>
+                <div className='w-full mt-2'>
                     <p>Date of Birth</p>
                     <input className='border border-zinc-300 rounded w-full p-2 mt-2' type="date" name="dob" onChange={handleChange} value={formData.dob} required />
                 </div>
 
                 {/* Doctor-Specific Fields */}
                 {userType === 'Doctor' && (
-                    <div>
+                    <div className='w-full flex flex-col gap-2 mt-4'>
 
                         <div className='w-full'>
                             <p>Speciality</p>
@@ -203,6 +207,16 @@ export const Signup = () => {
                                 onChange={handleChange}
                                 className='w-full mt-2'
                             />
+                        </div>
+
+                        <div className='w-full'>
+                            <p>About</p>
+                            <input className='border border-zinc-300 rounded w-full p-2 mt-2' type="text" name="about" onChange={handleChange} value={formData.fullname} required />
+                        </div>
+
+                        <div className='w-full'>
+                            <p>Fees in ₹</p>
+                            <input className='border border-zinc-300 rounded w-full p-2 mt-2' type="number" name="fees" min={100} max={10000} onChange={handleChange} value={formData.fees} required />
                         </div>
 
                     </div>
