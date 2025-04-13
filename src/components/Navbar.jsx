@@ -32,7 +32,7 @@ export const Navbar = () => {
         {
           token 
           ? <div className='flex items-center gap-2 cursor-pointer group relative mr-4'>
-            <img src={assets.profile_pic} alt="" className='w-8 rounded-full'/>
+            <img src={assets.upload_area} alt="" className='w-8 rounded-full'/>
             <img src={assets.dropdown_icon} alt="" className='w-2.5'/>
             <div className='absolute top-10 right-0 pt-4 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
               <div className='min-w-48 bg-stone-100 rounded flex flex-col shadow-lg gap-4 p-4'>

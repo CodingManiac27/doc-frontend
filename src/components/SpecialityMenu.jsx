@@ -20,7 +20,7 @@ export const SpecialityMenu = () => {
         <div className='flex flex-row justify-center mt-10 w-full gap-4 h-30'>
             {specialityData.map((val, i) => (
                 <Link to={`/doctors/${val.speciality}`} className='flex flex-col items-center px-1.5 hover:translate-y-[-10px] transition-all duration-500' key={i}>
-                    <img src={val.image} alt="" className='w-16 sm:w-24 mb-2'/>
+                    <img src={val.dpUrl} alt="" className='w-16 sm:w-24 mb-2'/>
                     <p className='text-xs font-medium'>{val.speciality}</p>
                 </Link>
             ))}

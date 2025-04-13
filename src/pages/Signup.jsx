@@ -51,12 +51,8 @@ export const Signup = () => {
                 withCredentials: true,
             })
                 .then(response => {
-                    console.log("✅ Response:", response)
-                    console.log("✅ Response.data:", response.data.doctor)
-                    console.log("✅ Response.status:", response.data.doctor.dpUrl)
-                    console.log("✅ Response.statusText:", response.statusText)
-                    console.log("✅ Response.headers:", response.headers)
-                    console.log("✅ Response.config:", response.config)
+                    console.log("✅ Response.data.data: ", response.data.data)
+                    
                     toast.success("Created account successfully");
                 })
                 .catch(error => {

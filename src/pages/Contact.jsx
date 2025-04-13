@@ -34,6 +34,16 @@ export const Contact = () => {
             linkedin="https://www.linkedin.com/in/gaurav-phule-768394248/"
             role="Backend"
           />
+
+          {/* info 3 */}
+          
+          <AuthorCard 
+            name="Ayan Maniyar"
+            imgsrc="https://pbs.twimg.com/profile_images/1904974670597865472/wOfhXPZo_400x400.jpg"
+            linkedin=""
+            role="Documentation"
+            mail="ayanmaniyar110@gmail.com"
+          />
       
         </div>
       
