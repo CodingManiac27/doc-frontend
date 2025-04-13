@@ -14,21 +14,21 @@ export const Appointments = () => {
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState('');
 
-  const fetchDocInfo = async () => {
-    const docInfo = doctors.find((doctor) => doctor._id === docId)
-    setDocInfo(docInfo)
-  }
+  // const fetchDocInfo = async () => {
+  //   const docInfo = doctors.find((doctor) => doctor._id === docId)
+  //   setDocInfo(docInfo)
+  // }
 
   //gaurav your part
 
-  // const fetchDocInfo = async () => {
-  //   try {
-  //     const res = await axios.get(`https://quickcare-backend.vercel.app/api/v1/patient/get-doctor/${docId}`);
-  //     setDocInfo(res.data.data);
-  //   } catch (error) {
-  //     console.error("Failed to fetch doctor info:", error);
-  //   }
-  // }
+  const fetchDocInfo = async () => {
+    try {
+      const res = await axios.get(`https://quickcare-backend.vercel.app/api/v1/patient/get-doctor/${docId}`);
+      setDocInfo(res.data.data);
+    } catch (error) {
+      console.error("Failed to fetch doctor info:", error);
+    }
+  }
 
   const getavailableSlots = async () => {
     // try {
@@ -39,7 +39,7 @@ export const Appointments = () => {
     // }
 
     setDocSlots([])
-    
+
     let today = new Date()
     for (let i = 0; i < 7; i++) {
       let currentDate = new Date(today)
@@ -89,7 +89,7 @@ export const Appointments = () => {
 
       <div className='flex flex-col sm:flex-row gap-4'>
         <div>
-          <img src={docInfo.dpUrl} className='bg-indigo-600 w-full sm:w-max-72 rounded-lg' alt="" />
+          <img src={docInfo.dpUrl} className='bg-indigo-600 w-72 sm:w-max-72 rounded-lg' alt="" />
         </div>
 
         <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
