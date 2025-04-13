@@ -100,8 +100,8 @@ export const Appointments = () => {
           <p className='flex items-center gap-2 text-2xl font-medium text-gray-900'>{docInfo.fullName} <img src={assets.verified_icon} className='w-5' alt="" /> </p>
 
           <div className='flex items-center gap-2 text-sm mt-1'>
-            <p>{docInfo.degree} - {docInfo.speciality} </p>
-            <button className='py-0.5 px-2 border text-xs rounded-full'>{docInfo.experience}</button>
+            <p> {docInfo.speciality} </p>
+            <button className='py-0.5 px-2 border text-xs rounded-full'>{docInfo.experienceOf}</button>
           </div>
 
           {/* about doctor */}
