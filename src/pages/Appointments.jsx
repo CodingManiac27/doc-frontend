@@ -108,6 +108,7 @@ export const Appointments = () => {
 
     try {
       const res = await axios.post(`https://quickcare-backend.vercel.app/api/v1/appointment/${docId}`, payload, {
+        headers: { "Content-Type": "application/json" },
         withCredentials: true
       });
 

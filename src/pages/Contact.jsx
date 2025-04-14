@@ -39,8 +39,8 @@ export const Contact = () => {
           
           <AuthorCard 
             name="Ayan Maniyar"
-            imgsrc="https://pbs.twimg.com/profile_images/1904974670597865472/wOfhXPZo_400x400.jpg"
-            linkedin=""
+            imgsrc="https://media.licdn.com/dms/image/v2/D4E03AQFQ7Ve1cIsW6A/profile-displayphoto-shrink_800_800/B4EZY0rAckGgAc-/0/1744640413151?e=1750291200&v=beta&t=T5CjXCNXBLipsmvS6CDqrP_z6TXdXS9MRfLKvJlrzmY"
+            linkedin="https://www.linkedin.com/in/ayan-maniyar-65a201360/"
             role="Documentation"
             mail="ayanmaniyar110@gmail.com"
           />
