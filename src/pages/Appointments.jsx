@@ -158,7 +158,7 @@ export const Appointments = () => {
                 }}>
 
                 <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-                <p>{item[0] && item[0].datetime.getDay()}</p>
+                <p>{item[0] && item[0].datetime.getDate()}</p>
 
               </div>
             ))}
@@ -169,7 +169,7 @@ export const Appointments = () => {
               docSlots.length && docSlots[slotIndex].map((item, index) => (
                 <p
                   key={index}
-                  className='text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer'
+                  className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${ slotIndex === index ? "bg-indigo-600 text-white" : "border border-gray-200"}`}
                 >
                   {item.time.toLowerCase()}
                 </p>
