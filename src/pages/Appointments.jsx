@@ -4,6 +4,7 @@ import { data, useParams } from "react-router";
 import { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const Appointments = () => {
   const { docId } = useParams();
@@ -80,6 +81,47 @@ export const Appointments = () => {
       setDocSlots((prev) => [...prev, timeSlots]);
     }
   };
+
+  const submitAppointment = async () => {
+    if (!docSlots[slotIndex] || !slotTime) {
+      toast.error("Please select a date and time");
+      return;
+    }
+
+    // Find the datetime object for the selected slot
+    const selectedSlot = docSlots[slotIndex].find(slot => slot.time === slotTime);
+
+    if (!selectedSlot) {
+      toast.error("Selected time not found.");
+      return;
+    }
+
+    const startDateTime = new Date(selectedSlot.datetime);
+    const endDateTime = new Date(startDateTime);
+    endDateTime.setMinutes(endDateTime.getMinutes() + 30);
+
+    const payload = {
+      doctorId: id,
+      // patientId: userId,
+      date: startDateTime.toISOString().split("T")[0], // 'YYYY-MM-DD'
+      startTime: startDateTime.toISOString(),
+      endTime: endDateTime.toISOString()
+    };
+
+    try {
+      const res = await axios.post("https://quickcare-backend.vercel.app/api/v1/patient/book-appointment", payload, {
+        withCredentials: true
+      });
+
+      console.log("✅ Appointment booked:", res.data);
+      toast.success("Appointment booked successfully!");
+
+    } catch (error) {
+      console.error("❌ Booking failed:", error);
+      toast.error("Failed to book appointment. Try again.");
+    }
+  };
+
 
   useEffect(() => {
     fetchDocInfo();
@@ -178,7 +220,7 @@ export const Appointments = () => {
             }
           </div>
 
-          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm h-10 rounded-full my-4 text-white mr-6 px-4 py-1'>Book an Appointment</button>
+          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm h-10 rounded-full my-6 text-white mr-6 px-6 py-1' onClick={() => submitAppointment}>Book an Appointment</button>
 
         </div>
       </div>

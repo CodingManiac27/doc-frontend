@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +12,8 @@ export const Login = () => {
     email: "",
     password: ""
   })
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,6 +41,7 @@ export const Login = () => {
         console.log("✅ Response:", response)
         console.log("✅ Response.data:", response.data.message)
         toast.success("Logged in successfully");
+        navigate('/');
 
       })
       .catch(error => {
@@ -62,9 +66,6 @@ export const Login = () => {
           toast.error("Something went wrong.");
         }
       });
-
-    // console.log(formData);
-
   }
   return (
     <form className="min-h-[80vh] flex items-center" onSubmit={submitFn}>
