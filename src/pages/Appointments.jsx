@@ -71,7 +71,7 @@ export const Appointments = () => {
         currentDate.setMinutes(currentDate.getMinutes() + 30)
       }
 
-      setDocSlots((prev) => ([...prev, slotTime]))
+      setDocSlots((prev) => ([...prev, timeSlots]))
     }
   }
 
