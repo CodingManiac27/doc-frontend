@@ -103,17 +103,17 @@ export const Appointments = () => {
     const payload = {
       doctorId: id,
       // patientId: userId,
-      date: startDateTime.toISOString().split("T")[0], // 'YYYY-MM-DD'
+      AppointmentDate: startDateTime.toISOString().split("T")[0], // 'YYYY-MM-DD'
       startTime: startDateTime.toISOString(),
       endTime: endDateTime.toISOString()
     };
 
     try {
-      const res = await axios.post("https://quickcare-backend.vercel.app/api/v1/patient/book-appointment", payload, {
+      const res = await axios.post(`https://quickcare-backend.vercel.app/api/v1//appointment/${docId}`, payload, {
         withCredentials: true
       });
 
-      console.log("✅ Appointment booked:", res.data);
+      console.log("✅ Appointment booked:", res.data.data);
       toast.success("Appointment booked successfully!");
 
     } catch (error) {

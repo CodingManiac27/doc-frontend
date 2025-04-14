@@ -42,7 +42,6 @@ export const Login = () => {
         console.log("✅ Response.data:", response.data.message)
         toast.success("Logged in successfully");
         navigate('/');
-
       })
       .catch(error => {
         console.error("❌ Error:", error);
@@ -67,6 +66,7 @@ export const Login = () => {
         }
       });
   }
+
   return (
     <form className="min-h-[80vh] flex items-center" onSubmit={submitFn}>
       <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 text-zinc-600 rounded-xl shadow-lg">
