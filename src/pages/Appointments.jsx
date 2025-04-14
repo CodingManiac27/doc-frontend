@@ -107,7 +107,7 @@ export const Appointments = () => {
     };
 
     try {
-      const res = await axios.post(`https://quickcare-backend.vercel.app/api/v1//appointment/${docId}`, payload, {
+      const res = await axios.post(`https://quickcare-backend.vercel.app/api/v1/appointment/${docId}`, payload, {
         withCredentials: true
       });
 
