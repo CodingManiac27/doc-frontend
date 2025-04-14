@@ -143,7 +143,7 @@ export const Appointments = () => {
 
           <p>Booking Slots</p>
 
-          <div className="flex items-center gap-3 mt-2 w-full overflow-x-scroll mt-4">
+          <div className="flex items-center gap-3 w-full overflow-x-scroll mt-4">
             {doctors.length && docSlots.map((item, index) => (
               <div
                 key={index}
@@ -154,7 +154,7 @@ export const Appointments = () => {
                 }`}
                 onClick={() => {
                   setSlotIndex(index);
-                  setSlotTime();
+                  setSlotTime("");
                 }}>
 
                 <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
@@ -177,6 +177,8 @@ export const Appointments = () => {
               ))
             }
           </div>
+
+          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm w-[10rem] h-10 rounded-full my-auto text-white mr-6 lg:block hidden'>Book an Appointment</button>
 
         </div>
       </div>

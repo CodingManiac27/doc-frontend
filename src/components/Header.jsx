@@ -7,10 +7,10 @@ export const Header = () => {
         
         {/* left side */}
 
-        <div className='text-white content-center'>
-          <p className='text-4xl font-extrabold'>Book Appointment </p>
+        <div className='text-white content-center lg:my-0 my-12'>
+          <p className='text-4xl font-extrabold whitespace-nowrap'>Book Appointment </p>
           <br />
-          <p className='text-4xl font-extrabold'>With Trusted Doctors</p>
+          <p className='text-4xl font-extrabold whitespace-nowrap'>With Trusted Doctors</p>
 
           <div className='flex my-4 '>
             <img src={assets.group_profiles} className='h-12 w-28 mr-6' alt="" loading='lazy'/>
@@ -26,7 +26,7 @@ export const Header = () => {
         {/* right side */}
 
         <div className='mt-16'>
-          <img src={assets.threedocs} alt="" className='w-5xl min-w-auto'/>
+          <img src={assets.threedocs} alt="" className='w-5xl min-w-auto lg:block hidden'/>
         </div>
       </div>
   )
