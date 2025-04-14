@@ -154,7 +154,7 @@ export const Appointments = () => {
                 }`}
                 onClick={() => {
                   setSlotIndex(index);
-                  setSlotTime(item[0].time);
+                  // setSlotTime(item[0].time);
                 }}>
 
                 <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
