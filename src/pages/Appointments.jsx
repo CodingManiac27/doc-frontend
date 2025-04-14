@@ -79,9 +79,9 @@ export const Appointments = () => {
     fetchDocInfo();
   }, [doctors, docId]);
 
-  // useEffect(() => {
-  //   getavailableSlots();
-  // }, [docInfo]);
+  useEffect(() => {
+    getavailableSlots();
+  }, [docInfo]);
 
   return docInfo && (
     <div className='mt-6'>
