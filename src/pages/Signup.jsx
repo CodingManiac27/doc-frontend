@@ -44,6 +44,8 @@ export const Signup = () => {
             data.append('speciality', formData.speciality);
             data.append('dob', formData.dob);
             data.append('experienceOf', formData.experienceOf || 1);
+            data.append('fees', formData.fees || 100);
+            data.append('about', formData.about);
             data.append('role', userType);
 
             if (formData.DP) {
@@ -211,7 +213,7 @@ export const Signup = () => {
 
                         <div className='w-full'>
                             <p>About</p>
-                            <input className='border border-zinc-300 rounded w-full p-2 mt-2' type="text" name="about" onChange={handleChange} value={formData.fullname} required />
+                            <input className='border border-zinc-300 rounded w-full p-2 mt-2' type="text" name="about" onChange={handleChange} value={formData.about} required />
                         </div>
 
                         <div className='w-full'>
