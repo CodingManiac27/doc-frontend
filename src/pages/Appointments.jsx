@@ -101,8 +101,6 @@ export const Appointments = () => {
     endDateTime.setMinutes(endDateTime.getMinutes() + 30);
 
     const payload = {
-      doctorId: id,
-      // patientId: userId,
       AppointmentDate: startDateTime.toISOString().split("T")[0], // 'YYYY-MM-DD'
       startTime: startDateTime.toISOString(),
       endTime: endDateTime.toISOString()
@@ -220,7 +218,7 @@ export const Appointments = () => {
             }
           </div>
 
-          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm h-10 rounded-full my-6 text-white mr-6 px-6 py-1' onClick={() => submitAppointment}>Book an Appointment</button>
+          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm h-10 rounded-full my-6 text-white mr-6 px-6 py-1' onClick={submitAppointment}>Book an Appointment</button>
 
         </div>
       </div>
