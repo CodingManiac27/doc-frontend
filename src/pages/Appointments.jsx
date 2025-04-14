@@ -178,7 +178,7 @@ export const Appointments = () => {
             }
           </div>
 
-          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm w-[10rem] h-10 rounded-full my-auto text-white mr-6 lg:block hidden'>Book an Appointment</button>
+          <button className='bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-sm w-[10rem] h-10 rounded-full my-4 text-white mr-6 px-4 py-1'>Book an Appointment</button>
 
         </div>
       </div>
