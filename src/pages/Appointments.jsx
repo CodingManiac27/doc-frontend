@@ -120,8 +120,7 @@ export const Appointments = () => {
 
     } catch (error) {
       console.error("❌ Booking failed:", error);
-      toast.success("Appointment booked successfully!");
-      //toast.error("Failed to book appointment. Try again.");
+      toast.error("Failed to book appointment. Try again.");
     }
   };
 
