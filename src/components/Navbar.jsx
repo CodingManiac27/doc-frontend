@@ -8,7 +8,7 @@ export const Navbar = () => {
 
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
 
   useEffect(() => {
   const tokenCheck = Cookies.get('token');
