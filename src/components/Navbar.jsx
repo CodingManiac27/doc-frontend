@@ -1,13 +1,29 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Cookies from "js-cookie"
 
 export const Navbar = () => {
 
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
+
+  useEffect(() => {
+  const tokenCheck = Cookies.get('token');
+  if (tokenCheck) {
+    setToken(true);
+  } 
+}, []);
+  
+  const tokenRemoveFn = () =>{
+    const tokenTry = Cookies.get('token');
+    if(tokenTry){
+      Cookies.remove('token', { path: '/' });
+      setToken(false)
+    }
+  }
 
   return (
     <div className='min-w-auto max-w-80% h-16 rounded-2xl shadow-xl my-4 flex flex-row justify-between '>
@@ -38,7 +54,7 @@ export const Navbar = () => {
               <div className='min-w-48 bg-stone-100 rounded flex flex-col shadow-lg gap-4 p-4'>
                 <p onClick={() => navigate('my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
                 <p onClick={() => navigate('my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
-                <p onClick={() => setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
+                <p onClick={tokenRemoveFn} className='hover:text-black cursor-pointer'>Logout</p>
               </div>
             </div>
           </div> :

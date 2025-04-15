@@ -5,6 +5,7 @@ import { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 export const Appointments = () => {
   const { docId } = useParams();
@@ -108,7 +109,9 @@ export const Appointments = () => {
 
     try {
       const res = await axios.post(`https://quickcare-backend.vercel.app/api/v1/appointment/${docId}`, payload, {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}` 
+      },
         withCredentials: true
       });
 

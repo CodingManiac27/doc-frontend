@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie";
 
 export const Login = () => {
   const [userType, setUserType] = useState('Patient');
@@ -37,9 +38,14 @@ export const Login = () => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     })
-      .then(response => {
-        console.log("✅ Response:", response)
-        console.log("✅ Response.data:", response.data.message)
+      .then(res => {
+        const token = res.data.data
+        Cookies.set('token', token, {
+          expires: 1,        // 1 day
+          path: '/',
+          secure: true,      // required for cross-site cookies
+          sameSite: 'None'   // required for cross-site cookies
+    });
         toast.success("Logged in successfully");
         navigate('/');
       })
