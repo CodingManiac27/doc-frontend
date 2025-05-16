@@ -10,8 +10,6 @@ This repository contains the frontend code for QuickCare, a doctor appointment b
 
 **Owner:** [shubhamxpawar](https://github.com/shubhamxpawar)
 
-**Homepage:** [https://quickcare-henna.vercel.app](https://quickcare-henna.vercel.app)
-
 **Contributors:** shubhamxpawar, GauravPhule23
 
 ## 🚀 Installation
